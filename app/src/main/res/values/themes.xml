@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.WordPop" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/cloud</item>
+        <item name="android:colorPrimary">#5B4BFF</item>
+    </style>
+</resources>
