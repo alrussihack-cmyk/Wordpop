@@ -183,7 +183,7 @@ class OverlayService : Service() {
             background = GradientDrawable().apply {
                 setColor(Color.WHITE)
                 cornerRadius = dp(22).toFloat()
-                setStroke(dp(1), 0xFFE3E1FA.toInt())
+                setStroke(dp(1), 0xFFEBE8FD.toInt())
             }
             elevation = dp(8).toFloat()
         }
@@ -247,7 +247,7 @@ class OverlayService : Service() {
             layoutParams = LinearLayout.LayoutParams(dp(40), dp(40)).apply { marginEnd = dp(8) }
             setOnClickListener {
                 SettingsStore(this@OverlayService).addHard(w.id)
-                bg.setColor(0xFFD5F7EC.toInt())
+                bg.setColor(0xFFD1F9EC.toInt())
                 Toast.makeText(this@OverlayService, "اتضافت للكلمات الصعبة", Toast.LENGTH_SHORT).show()
             }
         }

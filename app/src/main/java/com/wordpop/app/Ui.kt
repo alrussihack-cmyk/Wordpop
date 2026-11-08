@@ -75,10 +75,34 @@ val Purple = Color(0xFF5B4BFF)
 val PurpleDark = Color(0xFF3A2FD0)
 val Night = Color(0xFF14143A)
 val Mint = Color(0xFF2DD4A7)
-val Cloud = Color(0xFFF6F5FF)
+val Cloud = Color(0xFFF6F4FF)
 val Muted = Color(0xFF4A4A72)
-val Line = Color(0xFFE3E1FA)
+val Line = Color(0xFFEBE8FD)
 val Danger = Color(0xFFD64550)
+val PurpleSoft = Color(0xFFEBE8FD)
+val MintDeep = Color(0xFF0E8F6A)
+val AmberDeep = Color(0xFF9A6A00)
+
+/** One of the three brand pillars: POP / HEAR / KEEP (تطلع / تسمع / تثبت). */
+@Composable
+fun PillarCard(title: String, label: String, icon: Int, tint: Color, accent: Color, modifier: Modifier = Modifier) {
+    Surface(shape = RoundedCornerShape(20.dp), color = Color.White, modifier = modifier) {
+        Column(
+            Modifier.padding(vertical = 14.dp, horizontal = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            Box(
+                Modifier.size(40.dp).clip(RoundedCornerShape(12.dp)).background(tint),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(painterResource(icon), contentDescription = null, tint = accent, modifier = Modifier.size(22.dp))
+            }
+            Text(title, fontSize = 17.sp, fontWeight = FontWeight.ExtraBold, color = Night)
+            En(label, 11.sp, color = accent, weight = FontWeight.Bold)
+        }
+    }
+}
 
 @Composable
 fun WordPopTheme(content: @Composable () -> Unit) {
@@ -375,7 +399,7 @@ fun HomeScreen(
             Image(painterResource(R.drawable.ic_logo), contentDescription = null, modifier = Modifier.size(52.dp))
             Column {
                 Text("ووردبوب", fontSize = 28.sp, fontWeight = FontWeight.ExtraBold, color = Night)
-                Text("كلمة كل شوية.. وإنجليزيتك بتكبر", fontSize = 15.sp, color = Muted)
+                Text("نخلّي الإنجليزي هو اللي يلاقيك", fontSize = 15.sp, color = Muted)
             }
         }
 
@@ -404,7 +428,7 @@ fun HomeScreen(
         }
 
         if (!overlayGranted) {
-            Surface(shape = RoundedCornerShape(20.dp), color = Color(0xFFFFF1CC), modifier = Modifier.fillMaxWidth()) {
+            Surface(shape = RoundedCornerShape(20.dp), color = Color(0xFFFCEFC4), modifier = Modifier.fillMaxWidth()) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(
                         "لازم تسمح للتطبيق يظهر فوق التطبيقات التانية، من غير كده الكلمات مش هتظهر.",
@@ -423,7 +447,13 @@ fun HomeScreen(
             SecondaryButton("ابدأ أتعلّم", Modifier.weight(1f)) { onStartLearning() }
         }
 
-        Surface(shape = RoundedCornerShape(24.dp), color = Color(0xFFD5F7EC), modifier = Modifier.fillMaxWidth()) {
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
+            PillarCard("تطلع", "POP", R.drawable.ic_pop, PurpleSoft, Purple, Modifier.weight(1f))
+            PillarCard("تسمع", "HEAR", R.drawable.ic_volume, Color(0xFFD1F9EC), MintDeep, Modifier.weight(1f))
+            PillarCard("تثبت", "KEEP", R.drawable.ic_bookmark, Color(0xFFFCEFC4), AmberDeep, Modifier.weight(1f))
+        }
+
+        Surface(shape = RoundedCornerShape(24.dp), color = Color(0xFFD1F9EC), modifier = Modifier.fillMaxWidth()) {
             Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Text("كلماتك الصعبة وقصتك", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Night)
                 Text(
@@ -671,7 +701,7 @@ fun LearnScreen(store: SettingsStore, startWord: Word, onClose: () -> Unit) {
                 val shape = RoundedCornerShape(18.dp)
                 val bg = when {
                     p == null -> Color.White
-                    isCorrect -> Color(0xFFD5F7EC)
+                    isCorrect -> Color(0xFFD1F9EC)
                     isPicked -> Color(0xFFFFE3E5)
                     else -> Color.White
                 }

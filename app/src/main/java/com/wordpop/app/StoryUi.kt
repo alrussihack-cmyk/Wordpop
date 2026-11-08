@@ -52,7 +52,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 private val HardBg = Color(0xFFE9E6FF)
-private val OkBg = Color(0xFFD5F7EC)
+private val OkBg = Color(0xFFD1F9EC)
 
 @Composable
 private fun ScreenHeader(title: String, onBack: () -> Unit) {
@@ -278,7 +278,7 @@ fun StoryScreen(store: SettingsStore, onBack: () -> Unit) {
         } else {
             val n = st.wordIds.count { it in hardIds }
             notice?.let {
-                Surface(shape = RoundedCornerShape(18.dp), color = Color(0xFFFFF1CC), modifier = Modifier.fillMaxWidth()) {
+                Surface(shape = RoundedCornerShape(18.dp), color = Color(0xFFFCEFC4), modifier = Modifier.fillMaxWidth()) {
                     Text(it, fontSize = 15.sp, color = Night, modifier = Modifier.padding(14.dp))
                 }
             }
